@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Excluir elemento {{data.nome}}</h2>
+<h2 mat-dialog-title>Com endereco {{data.endereco}}</h2>
+<mat-dialog-content>
+  This dialog showcases the title, close, content and actions elements.
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button [mat-dialog-close]="true" (click)="ExcluirCategoria(data.cadastroId)" cdkFocusInitial>Excluir</button>
+</mat-dialog-actions>

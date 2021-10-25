@@ -1,0 +1,158 @@
+<div fxLayout="row" fxLayoutAlign="center end" class="registroFormulario">
+  <div class="divFormulario">
+      <h1>Cadastro de usuários</h1>
+      <mat-divider></mat-divider>
+
+<div class="formulario">
+  <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()">
+    <div fxLayout="row" fxLayoutGap="30px">
+      <div fxFlex="40" fxLayoutAlign="center end">
+        <div fxLayout="column">
+          <div class="divFoto">
+            <img hidden id="foto" src="#" width="350" height="300"/>
+          </div>
+
+          <div fxLayoutAlign="center end">
+            <input
+            hidden
+            type="file"
+            #fileInput name="foto"
+            formControlName="foto"
+            required
+            (change)="SelecionarFoto($event)"
+            />
+            <br><br><br><br>
+            <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()">
+              Escolha a sua foto
+            </button>
+            <div *ngIf="propriedade.foto.touched && propriedade.foto.invalid">
+              <sup>*</sup> Escolha a sua foto
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex='60'>
+        <div class="cardErros" *ngIf="erros.length > 0">
+          <mat-card-title>Algo deu errado :(</mat-card-title>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <div class="divErros">
+              <h4 *ngFor="let erro of erros" class="textoErros">
+                {{erros}}
+              </h4>
+            </div>
+          </mat-card-content>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Nome de Usuário</mat-label>
+          <input type="text" formControlName="nomeusuario" matInput placeholder="Digite o nome do usuário" required minlength="6" maxlength="40">
+
+            <mat-error *ngIf="propriedade.nomeusuario.invalid && propriedade.nomeusuario.touchec">
+              <sup>*</sup>Digite o seu nome de usuário
+            </mat-error>
+            <mat-error *ngIf="propriedade.nomeusuario.invalid && propriedade.nomeusuario.erros?.minlength">
+              <sup>*</sup>Use mais caracteres
+            </mat-error>
+            <mat-error *ngIf="propriedade.nomeusuario.invalid && propriedade.nomeusuario.erros?.maxlength">
+              <sup>*</sup>Use menos caracteres
+            </mat-error>
+
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>CPF</mat-label>
+          <input type="text"
+          formControlName="cpf"
+          matInput
+          placeholder="Digite o seu CPF"
+          required
+          minlength="1"
+          maxlength="20"
+          mask='000.000.000-00'
+          >
+            <mat-error *ngIf="propriedade.cpf.invalid && propriedade.cpf.touchec">
+              <sup>*</sup>Digite o seu CPF
+            </mat-error>
+            <mat-error *ngIf="propriedade.cpf.invalid && propriedade.cpf.erros?.minlength">
+              <sup>*</sup>Use mais caracteres
+            </mat-error>
+            <mat-error *ngIf="propriedade.cpf.invalid && propriedade.cpf.erros?.maxlength">
+              <sup>*</sup>Use menos caracteres
+            </mat-error>
+
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Profissão</mat-label>
+          <input type="text" formControlName="profissao" matInput placeholder="Digite a sua profissão" required minlength="1" maxlength="30">
+            <mat-error *ngIf="propriedade.profissao.invalid && propriedade.profissao.touchec">
+              <sup>*</sup>Digite a sua profissão
+            </mat-error>
+            <mat-error *ngIf="propriedade.profissao.invalid && propriedade.profissao.erros?.minlength">
+              <sup>*</sup>Use mais caracteres
+            </mat-error>
+            <mat-error *ngIf="propriedade.profissao.invalid && propriedade.profissao.erros?.maxlength">
+              <sup>*</sup>Use menos caracteres
+            </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="text" formControlName="email" matInput placeholder="Digite o seu email" required minlength="1" maxlength="50">
+            <mat-error *ngIf="propriedade.email.invalid && propriedade.email.touchec">
+              <sup>*</sup>Digite o seu email
+            </mat-error>
+            <mat-error *ngIf="propriedade.email.invalid && propriedade.email.erros?.minlength">
+              <sup>*</sup>Use mais caracteres
+            </mat-error>
+            <mat-error *ngIf="propriedade.email.invalid && propriedade.email.erros?.maxlength">
+              <sup>*</sup>Use menos caracteres
+            </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input type="password" formControlName="senha" matInput placeholder="Digite a sua senha" required minlength="1" maxlength="50">
+
+            <mat-error *ngIf="propriedade.senha.invalid && propriedade.senha.touchec">
+              <sup>*</sup>Digite a sua senha
+            </mat-error>
+            <mat-error *ngIf="propriedade.senha.invalid && propriedade.senha.erros?.minlength">
+              <sup>*</sup>Use mais caracteres
+            </mat-error>
+            <mat-error *ngIf="propriedade.senha.invalid && propriedade.senha.erros?.maxlength">
+              <sup>*</sup>Use menos caracteres
+            </mat-error>
+
+        </mat-form-field>
+      </div>
+      <mat-divider></mat-divider>
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center" class="botoes">
+      <div>
+        <button type="submit" mat-stroked-button color="primary" [disabled]="formulario.invalid">
+          Registrar
+        </button>
+      </div>
+      <div>
+        <button type="button" mat-stroked-button color="accent" routerLink="/usuarios/login">
+          Já tenho conta
+        </button>
+      </div>
+      </div>
+    </div>
+</div>
+  </form>
+</div>
+
+  </div>
+
+</div>
