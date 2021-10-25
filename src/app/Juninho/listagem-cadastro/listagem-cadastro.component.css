@@ -1,0 +1,16 @@
+.table-cadastro{
+  width: 100%;
+}
+.divCard{
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.divButton{
+ float:right
+}
+
+button{
+  margin-left: 1rem;
+}

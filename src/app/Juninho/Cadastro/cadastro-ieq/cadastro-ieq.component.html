@@ -1,0 +1,67 @@
+<mat-card>Cadastro KIDS
+<form [formGroup]="formulario" class="cadastro" (ngSubmit)="Enviar()">
+<mat-form-field class="cadastro_item">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" formControlName="nome" required>
+    <mat-error *ngIf="propriedade.nome.touched && propriedade.nome.invalid">
+      <sup>*</sup>Limite de caracteres
+    </mat-error>
+</mat-form-field>
+<mat-form-field class="cadastro_item">
+    <mat-label>Endereço</mat-label>
+    <input matInput type="text" formControlName="endereco" required>
+    <mat-error *ngIf="propriedade.endereco.touched && propriedade.endereco.invalid">
+      <sup>*</sup>Limite de caracteres
+    </mat-error>
+</mat-form-field>
+<mat-form-field class="cadastro_item_numero">
+    <mat-label>Nº</mat-label>
+    <input matInput type="text" formControlName="numero" required>
+    <mat-error *ngIf="propriedade.numero.touched && propriedade.numero.invalid">
+      <sup>*</sup>Limite de caracteres
+    </mat-error>
+</mat-form-field>
+<mat-form-field class="cadastro_item_cep">
+    <mat-label>CEP</mat-label>
+    <input matInput type="text" formControlName="cep" required>
+    <mat-error *ngIf="propriedade.cep.touched && propriedade.cep.invalid">
+      <sup>*</sup>Limite de caracteres
+    </mat-error>
+</mat-form-field>
+<mat-form-field class="cadastro_item_bairro">
+    <mat-label>Bairro</mat-label>
+    <input matInput type="text" formControlName="bairro" required>
+    <mat-error *ngIf="propriedade.bairro.touched && propriedade.bairro.invalid">
+      <sup>*</sup>Limite de caracteres
+    </mat-error>
+</mat-form-field>
+<div class="combo">
+<mat-form-field appearance="fill" class="cadastro_item_dataNascimento">
+  <mat-label>Data de Nascimento</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dataNascimento"required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="propriedade.dataNascimento.touched && propriedade.dataNascimento.invalid">
+      <sup>*</sup>Selecione algum valor
+    </mat-error>
+</mat-form-field>
+<mat-form-field appearance="fill" class="cadastro_item_sexo">
+  <mat-label>Sexo</mat-label>
+  <mat-select formControlName="sexoId">
+    <mat-option *ngFor="let item of sexo" [value]="item.sexoId" required>{{item.tipo}}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="propriedade.dataNascimento.touched && propriedade.dataNascimento.invalid">
+    <sup>*</sup>Selecione algum valor
+  </mat-error>
+</mat-form-field>
+</div>
+<br>
+<mat-card-content>
+    <p>As informações fornecidas serão todas armazenadas conforme as leis de LGPD vigente no momento</p>
+</mat-card-content>
+<mat-card-actions>
+    <button type="submit" mat-raised-button color="primary" [disabled]="formulario.invalid">Adicionar</button>
+    <button mat-raised-button color="warning" (click)="Voltar()" >Voltar</button>
+</mat-card-actions>
+</form>
+</mat-card>

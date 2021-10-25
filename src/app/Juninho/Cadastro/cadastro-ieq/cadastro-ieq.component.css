@@ -1,0 +1,31 @@
+.cadastro{
+    min-width:150px;
+    max-width:500px;
+    width:100%;
+    margin-left:5rem;
+    margin-top:5rem;
+}
+
+.cadastro_item{
+    width:100%;
+}
+
+.cadastro_item_numero{
+    width:20%;
+}
+
+.cadastro_item_cep{
+    width:30;
+    padding-left:5px;
+}
+
+.cadastro_item_bairro{
+    width:42%;
+    padding-left:5px;
+}
+
+.cadastro_item_sexo{
+  padding-top: 13px;
+  padding-left:10px;
+  width: 40%;
+}
