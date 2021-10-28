@@ -1,3 +1,4 @@
+import { LoginUsuarioComponent } from './componentes/Usuario/Login/login-usuario/login-usuario.component';
 import { AtualizarCadastroComponent } from './Juninho/atualizar-cadastro/atualizar-cadastro/atualizar-cadastro.component';
 import { AutualizarFuncaoComponent } from './componentes/Funcao/autualizar-funcao/autualizar-funcao.component';
 import { NovafuncaoComponent } from './componentes/Funcao/novafuncao/novafuncao.component';
@@ -42,6 +43,9 @@ const routes: Routes = [
   },
   {
     path:"usuario/registrarusuario", component:RegistrarUsuarioComponent
+  },
+  {
+    path:"usuario/loginusuario", component:LoginUsuarioComponent
   }
 ];
 

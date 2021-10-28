@@ -66,7 +66,7 @@ EnviarFormulario():void{
     dadosRegistros.email = usuario.email;
     console.log(usuario);
 
-    this.usuarioService.RegistrarUsuario(usuario).subscribe(dados =>{
+    this.usuarioService.RegistrarUsuario(dadosRegistros).subscribe(dados =>{
       this.router.navigate(['categorias/listagemcategorias']);
     });
 

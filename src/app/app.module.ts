@@ -39,7 +39,8 @@ import { ListagemCadastroComponent , DialogElementsExampleDialog} from './Juninh
 import { AtualizarCadastroComponent } from './Juninho/atualizar-cadastro/atualizar-cadastro/atualizar-cadastro.component';
 import { RegistrarUsuarioComponent } from './componentes/Usuario/Registro/registrar-usuario/registrar-usuario.component';
 import { FlexLayoutModule} from '@angular/flex-layout';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { LoginUsuarioComponent } from './componentes/usuario/login/login-usuario/login-usuario.component'
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     ListagemCadastroComponent,
     AtualizarCadastroComponent,
     DialogElementsExampleDialog,
-    RegistrarUsuarioComponent
+    RegistrarUsuarioComponent,
+    LoginUsuarioComponent
   ],
   imports: [
     BrowserModule,
