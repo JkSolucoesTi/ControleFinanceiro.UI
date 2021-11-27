@@ -1,16 +1,12 @@
-import { map, startWith } from 'rxjs/operators';
 import { FuncoesService } from './../../../services/funcoes.service';
-import { funcao } from './../../../models/funcao';
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { DataSource } from '@angular/cdk/collections';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA , MatDialog} from '@angular/material/dialog';
-import { identifierName } from '@angular/compiler';
 
 @Component({
   selector: 'app-listagem-funcoes',

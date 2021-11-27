@@ -64,10 +64,16 @@ EnviarFormulario():void{
     dadosRegistros.foto = resultado.foto;
     dadosRegistros.senha = usuario.senha;
     dadosRegistros.email = usuario.email;
-    console.log(usuario);
 
     this.usuarioService.RegistrarUsuario(dadosRegistros).subscribe(dados =>{
-      this.router.navigate(['categorias/listagemcategorias']);
+
+      const emailUsuarioLogado = dados.emailUsuarioLogado;
+      const usuarioId = dados.UsuarioId;
+      const tokenUsuarioLogado = dados.tokenUsuarioLogado;
+      localStorage.setItem('EmailUsuarioLogado', emailUsuarioLogado);
+      localStorage.setItem('UsuarioId',usuarioId);
+      localStorage.setItem('tokenUsuarioLogado',tokenUsuarioLogado);
+      this.router.navigate(['usuario/loginusuario']);
     });
 
   });

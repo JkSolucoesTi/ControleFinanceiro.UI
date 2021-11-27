@@ -1,1 +1,97 @@
-<p>login-usuario works!</p>
+<div class="loginFormulario" fxLayout="row" fxLayoutAlign="center end">
+    <div class="divFormulario">
+      <h1>Faça seu login</h1>
+
+      <mat-divider></mat-divider>
+      <div class="cardErros" *ngIf="erros.length > 0">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Algo deu errado</mat-card-title>
+          </mat-card-header>
+
+          <mat-divider></mat-divider>
+
+          <mat-card-content>
+            <div class="divErros">
+              <h4 *ngFor="let erro in erros" class="textoErros">
+                {{erro}}
+              </h4>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="formulario">
+        <form [formGroup]="formulario" *ngIf="formulario" (ngSubmit)="EnviarFormulario()">
+          <div>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input
+              type="email"
+              formControlName="email"
+              placeholder="Digite seu email"
+              required
+              minlength="10"
+              maxlength="50"
+              matInput
+              >
+              <mat-error *ngIf="propriedades.email.touched && propriedades.email.invalid">
+                <sup>*</sup> Digite seu email
+              </mat-error>
+              <mat-error *ngIf="propriedades.email.errors?.minlength">
+                <sup>*</sup> Digite mais caracteres
+              </mat-error>
+              <mat-error *ngIf="propriedades.email.errors?.maxlength">
+                <sup>*</sup> Digite menos caracteres
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <br>
+          <div>
+            <mat-form-field>
+              <mat-label>Senha</mat-label>
+              <input matInput type="password"
+              formControlName="senha"
+              placeholder="Digite sua Senha"
+              required
+              minlength="4"
+              maxlength="50">
+             <mat-error *ngIf="propriedades.senha.touched && propriedades.senha.invalid">
+                <sup>*</sup> Digite sua senha
+              </mat-error>
+              <mat-error *ngIf="propriedades.senha.errors?.minlength">
+                <sup>*</sup> Digite mais caracteres
+              </mat-error>
+              <mat-error *ngIf="propriedades.senha.errors?.maxlength">
+                <sup>*</sup> Digite menos caracteres
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <br><br><br><br>
+          <mat-divider></mat-divider>
+
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center end" class="botoes">
+            <div>
+              <button
+              type="submit"
+              mat-stroked-button
+              color="primary"
+              [disabled]="formulario.invalid">
+                Logar
+              </button>
+            </div>
+            <div>
+              <button
+              type="button"
+              mat-stroked-button
+              color="accent"
+              routerLink="/usuario/registrarusuario">
+                Não possuo conta
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+</div>

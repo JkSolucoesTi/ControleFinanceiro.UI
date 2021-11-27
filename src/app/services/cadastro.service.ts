@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Cadastro } from './../models/Cadastro';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PegarTokenUsuario } from '../app.module';
 /*Configuração do envio de informações no rest post*/
 const httpOptions = {
   headers : new HttpHeaders(
     {
-      'Content-Type':'application/json'
+      'Content-Type':'application/json',
+      'Authorization':`Bearer ${localStorage.getItem('tokenUsuarioLogado')}}`
     }
   )
 };
@@ -27,6 +29,7 @@ NovoCadastro(cadastro: Cadastro): Observable<any>
 
 PegarTodos(): Observable<Cadastro[]>
 {
+  console.log(localStorage.getItem('tokenUsuarioLogado'));
   return this.httpClient.get<Cadastro[]>(this.url);
 }
 

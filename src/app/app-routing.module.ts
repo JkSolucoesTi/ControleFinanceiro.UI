@@ -1,51 +1,61 @@
-import { LoginUsuarioComponent } from './componentes/Usuario/Login/login-usuario/login-usuario.component';
+import { DashboardComponent } from './componentes/Dashboard/dashboard/dashboard.component';
 import { AtualizarCadastroComponent } from './Juninho/atualizar-cadastro/atualizar-cadastro/atualizar-cadastro.component';
 import { AutualizarFuncaoComponent } from './componentes/Funcao/autualizar-funcao/autualizar-funcao.component';
 import { NovafuncaoComponent } from './componentes/Funcao/novafuncao/novafuncao.component';
 import { AtualizarCategoriaComponent } from './componentes/Categoria/atualizar-categoria/atualizar-categoria.component';
 import { NovaCategoriaComponent } from './componentes/Categoria/nova-categoria/nova-categoria.component';
 import { CadastroIEQComponent } from './Juninho/Cadastro/cadastro-ieq/cadastro-ieq.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListagemCategoriaComponent } from './componentes/Categoria/listagem-categoria/listagem-categoria.component';
 import { ListagemFuncoesComponent } from './componentes/Funcao/listagem-funcoes/listagem-funcoes.component';
 import { ListagemCadastroComponent } from './Juninho/listagem-cadastro/listagem-cadastro.component';
 import { RegistrarUsuarioComponent } from './componentes/Usuario/Registro/registrar-usuario/registrar-usuario.component';
-
+import { LoginUsuarioComponent } from './componentes/Usuario/Login/login-usuario/login-usuario.component';
+import {AuthGuardService} from './services/auth-guard.service';
 
 const routes: Routes = [
   {
-    path:"categorias/listagemcategorias", component:ListagemCategoriaComponent
-  },
-  {
-    path:"categorias/novacategoria" , component:NovaCategoriaComponent
-  },
-  {
-    path:"categorias/atualizarcategoria/:categoriaId" , component:AtualizarCategoriaComponent
-  },
-  {
-    path:"juninho/CadastroKids",component:CadastroIEQComponent
-  },
-  {
-    path:"juninho/listagemCadastroKids",component:ListagemCadastroComponent
-  },
-  {
-    path:"funcoes/listagemfuncoes",component:ListagemFuncoesComponent
-  },
-  {
-    path:"funcoes/novafuncao",component:NovafuncaoComponent
-  },
-  {
-    path:"funcoes/atualizarfuncao/:funcaoId" , component:AutualizarFuncaoComponent
-  },
-  {
-    path:"juninho/atualizarcadastro/:cadastroId" , component:AtualizarCadastroComponent
-  },
+    path:"",
+    component:DashboardComponent,
+    canActivate:[AuthGuardService],
+    children:[
+      {
+        path:"categorias/listagemcategorias", component:ListagemCategoriaComponent
+      },
+      {
+        path:"categorias/novacategoria" , component:NovaCategoriaComponent
+      },
+      {
+        path:"categorias/atualizarcategoria/:categoriaId" , component:AtualizarCategoriaComponent
+      },
+      {
+        path:"funcoes/listagemfuncoes",component:ListagemFuncoesComponent
+      },
+      {
+        path:"funcoes/novafuncao",component:NovafuncaoComponent
+      },
+      {
+        path:"funcoes/atualizarfuncao/:funcaoId" , component:AutualizarFuncaoComponent
+      }
+      ,
+      {
+        path:"juninho/CadastroKids",component:CadastroIEQComponent
+      },
+      {
+        path:"juninho/listagemCadastroKids",component:ListagemCadastroComponent
+      },
+      {
+        path:"juninho/atualizarcadastro/:cadastroId" , component:AtualizarCadastroComponent
+      },
+    ]
+  }
+  ,
   {
     path:"usuario/registrarusuario", component:RegistrarUsuarioComponent
   },
   {
-    path:"usuario/loginusuario", component:LoginUsuarioComponent
+    path:"usuario/loginusuario" , component:LoginUsuarioComponent
   }
 ];
 
