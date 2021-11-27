@@ -2,6 +2,7 @@ import { DadosRegistro } from './../models/DadosRegistro';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DadosLogin } from '../models/DadosLogin';
 
 const httpOptions = {
   headers : new HttpHeaders({
@@ -25,8 +26,13 @@ export class UsuariosService {
   }
 
   RegistrarUsuario(dadosRegistros :DadosRegistro): Observable<any>{
-    const apiUrl = `${this.url}/RegistrarUsuario`;
+    const apiUrl = `${this.url}`;
     return this.httpClient.post<DadosRegistro>(apiUrl,dadosRegistros,httpOptions);
+  }
+
+  LogarUsuario(dadosLogin: DadosLogin):Observable<any>{
+    const apiUrl = `${this.url}/LogarUsuario`;
+    return this.httpClient.post<DadosLogin>(apiUrl,dadosLogin);
   }
 
 }

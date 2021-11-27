@@ -1,6 +1,8 @@
+import { JwtModule } from '@auth0/angular-jwt';
 import { FuncoesService } from './services/funcoes.service';
 import { CadastroService } from './services/cadastro.service';
 import { SexoService } from './services/sexo.service';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
@@ -11,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TiposService } from './services/tipos.service';
 import { CategoriasService} from './services/categorias.service';
-import { ListagemCategoriaComponent , DialogExclusaoCategoriaComponent } from './componentes/Categoria/listagem-categoria/listagem-categoria.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,14 +33,27 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CadastroIEQComponent } from './Juninho/Cadastro/cadastro-ieq/cadastro-ieq.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { NgxMaskModule } from 'ngx-mask';
+import { FlexLayoutModule} from '@angular/flex-layout';
+
+import { LoginUsuarioComponent } from './componentes/Usuario/Login/login-usuario/login-usuario.component';
+import { DashboardComponent } from './componentes/Dashboard/dashboard/dashboard.component';
+import { HeaderComponent } from './componentes/Dashboard/header/header.component';
+import { ListagemCategoriaComponent , DialogExclusaoCategoriaComponent } from './componentes/Categoria/listagem-categoria/listagem-categoria.component';
 import { ListagemFuncoesComponent , DialogExclusaoFuncoesComponent } from './componentes/Funcao/listagem-funcoes/listagem-funcoes.component';
 import { NovafuncaoComponent } from './componentes/Funcao/novafuncao/novafuncao.component';
 import { AutualizarFuncaoComponent } from './componentes/Funcao/autualizar-funcao/autualizar-funcao.component';
 import { ListagemCadastroComponent , DialogElementsExampleDialog} from './Juninho/listagem-cadastro/listagem-cadastro.component';
 import { AtualizarCadastroComponent } from './Juninho/atualizar-cadastro/atualizar-cadastro/atualizar-cadastro.component';
 import { RegistrarUsuarioComponent } from './componentes/Usuario/Registro/registrar-usuario/registrar-usuario.component';
-import { FlexLayoutModule} from '@angular/flex-layout';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { AuthGuardService} from './services/auth-guard.service';
+
+export function PegarTokenUsuario(){
+  return localStorage.getItem("tokenUsuarioLogado");
+}
 
 @NgModule({
   declarations: [
@@ -56,7 +70,10 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     ListagemCadastroComponent,
     AtualizarCadastroComponent,
     DialogElementsExampleDialog,
-    RegistrarUsuarioComponent
+    RegistrarUsuarioComponent,
+    LoginUsuarioComponent,
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -82,8 +99,18 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     MatNativeDateModule,
     MatDatepickerModule,
     MatProgressBarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
     FlexLayoutModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: PegarTokenUsuario,
+        allowedDomains:['localhost:5000','localhost:4200','localhost:44371'],
+        disallowedRoutes:[]
+      }
+    })
   ],
   /*Conjunto de objetos que serão inicializados por injeção de dependencia*/
   providers: [
@@ -92,7 +119,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     TiposService,
     CategoriasService,
     FuncoesService,
-    HttpClientModule
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

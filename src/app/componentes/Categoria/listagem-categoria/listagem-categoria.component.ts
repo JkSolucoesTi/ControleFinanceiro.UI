@@ -40,6 +40,7 @@ export class ListagemCategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoriasService.PegarTodos().subscribe((resultado) =>{
+      console.log(resultado);
       resultado.forEach( (cateoria) => {
         this.opcoesCategorias.push(cateoria.nome);
       });

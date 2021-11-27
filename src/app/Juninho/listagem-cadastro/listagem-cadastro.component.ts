@@ -31,6 +31,7 @@ export class ListagemCadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient.PegarTodos().subscribe(resultado => {
+      console.log(resultado)
       this.dataSource.data = resultado;
       this.dataSource.paginator = this.paginator;
     })
