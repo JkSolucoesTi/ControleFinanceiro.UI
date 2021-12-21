@@ -3,6 +3,7 @@ import { Cadastro } from './../models/Cadastro';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PegarTokenUsuario } from '../app.module';
+import { Categoria } from '../models/Categoria';
 /*Configuração do envio de informações no rest post*/
 const httpOptions = {
   headers : new HttpHeaders(
@@ -49,6 +50,11 @@ ExcluirCadastro(cadastroId:any):Observable<any>
 {
   const rota = `${this.url}/${cadastroId}`
  return  this.httpClient.delete<any>(rota);
+}
+
+FiltrarCategoriasDespesas():Observable<Categoria[]>{
+  const apiUrl = `${this.url}/FiltrarCategoriasDespesas`;
+  return this.httpClient.get<Categoria[]>(apiUrl);
 }
 
 }

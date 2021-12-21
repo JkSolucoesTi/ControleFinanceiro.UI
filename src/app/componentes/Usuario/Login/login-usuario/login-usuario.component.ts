@@ -39,7 +39,7 @@ EnviarFormulario():void{
     localStorage.setItem("usuarioId",usuarioId);
     localStorage.setItem("tokenUsuarioLogado",tokenUsuarioLogado);
 
-    this.router.navigate(['categorias/listagemcategorias']);
+    this.router.navigate(['cartoes/listagemcartoes']);
   },
   erro => {
     if(erro.status === 400){
