@@ -13,6 +13,12 @@ import { ListagemCadastroComponent } from './Juninho/listagem-cadastro/listagem-
 import { RegistrarUsuarioComponent } from './componentes/Usuario/Registro/registrar-usuario/registrar-usuario.component';
 import { LoginUsuarioComponent } from './componentes/Usuario/Login/login-usuario/login-usuario.component';
 import {AuthGuardService} from './services/auth-guard.service';
+import { NovoCartaoComponent } from './componentes/Cartao/novo-cartao/novo-cartao.component';
+import { ListagemCartoesComponent } from './componentes/Cartao/listagem-cartoes/listagem-cartoes.component';
+import { AtualizarCartaoComponent } from './componentes/Cartao/atualizar-cartao/atualizar-cartao.component';
+import { NovaDespesaComponent } from './componentes/Despesa/nova-despesa/nova-despesa.component';
+import { ListagemDespesasComponent } from './componentes/Despesa/listagem-despesas/listagem-despesas.component';
+import { AtualizarDespesaComponent } from './componentes/Despesa/atualizar-despesa/atualizar-despesa.component';
 
 const routes: Routes = [
   {
@@ -40,8 +46,32 @@ const routes: Routes = [
       }
       ,
       {
+        path:"cartoes/novocartao", component:NovoCartaoComponent
+      }
+      ,
+      {
+        path:"cartoes/listagemcartoes", component:ListagemCartoesComponent
+      }
+      ,
+      {
+        path:"cartoes/atualizarcartao/:id", component:AtualizarCartaoComponent
+      }
+      ,
+      {
+        path:"despesa/novadespesa", component:NovaDespesaComponent
+      }
+      ,
+      {
+        path:"despesa/listagemdespesas" , component:ListagemDespesasComponent
+      }
+      ,
+      {
         path:"juninho/CadastroKids",component:CadastroIEQComponent
       },
+      {
+        path:"despesa/atualizardespesa/:id" , component:AtualizarDespesaComponent
+      }
+      ,
       {
         path:"juninho/listagemCadastroKids",component:ListagemCadastroComponent
       },

@@ -1,7 +1,13 @@
+import { CartoesService } from './services/cartoes.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FuncoesService } from './services/funcoes.service';
 import { CadastroService } from './services/cadastro.service';
 import { SexoService } from './services/sexo.service';
+
+import { MesService } from './services/mes.service';
+import { DespesasService } from './services/despesas.service';
+
+
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,6 +56,12 @@ import { ListagemCadastroComponent , DialogElementsExampleDialog} from './Juninh
 import { AtualizarCadastroComponent } from './Juninho/atualizar-cadastro/atualizar-cadastro/atualizar-cadastro.component';
 import { RegistrarUsuarioComponent } from './componentes/Usuario/Registro/registrar-usuario/registrar-usuario.component';
 import { AuthGuardService} from './services/auth-guard.service';
+import { NovoCartaoComponent } from './componentes/Cartao/novo-cartao/novo-cartao.component';
+import { AtualizarCartaoComponent } from './componentes/Cartao/atualizar-cartao/atualizar-cartao.component';
+import { ListagemCartoesComponent, DialogExcluirCartaoComponent} from './componentes/Cartao/listagem-cartoes/listagem-cartoes.component';
+import { NovaDespesaComponent } from './componentes/Despesa/nova-despesa/nova-despesa.component';
+import { ListagemDespesasComponent } from './componentes/Despesa/listagem-despesas/listagem-despesas.component';
+import { AtualizarDespesaComponent } from './componentes/Despesa/atualizar-despesa/atualizar-despesa.component';
 
 export function PegarTokenUsuario(){
   return localStorage.getItem("tokenUsuarioLogado");
@@ -73,8 +85,15 @@ export function PegarTokenUsuario(){
     RegistrarUsuarioComponent,
     LoginUsuarioComponent,
     DashboardComponent,
-    HeaderComponent
-  ],
+    HeaderComponent,
+    NovoCartaoComponent,
+    ListagemCartoesComponent,
+    AtualizarCartaoComponent,
+    DialogExcluirCartaoComponent,
+    NovaDespesaComponent,
+    ListagemDespesasComponent,
+    AtualizarDespesaComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -118,8 +137,11 @@ export function PegarTokenUsuario(){
     SexoService,
     TiposService,
     CategoriasService,
+    CartoesService,
     FuncoesService,
-    AuthGuardService
+    AuthGuardService,
+    MesService,
+    DespesasService
   ],
   bootstrap: [AppComponent]
 })

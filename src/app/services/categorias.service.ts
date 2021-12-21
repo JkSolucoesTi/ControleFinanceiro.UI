@@ -55,4 +55,10 @@ export class CategoriasService {
     const apiUrl = `${this.url}/FiltrarCategoria/${nomeCategoria}`;
     return this.httpClient.get<Categoria[]>(apiUrl);
   }
+
+  FiltrarCategoriasDepesas() : Observable<Categoria[]>
+  {
+    const apiUrl = `${this.url}/FiltrarCategoriasDepesas/`;
+    return this.httpClient.get<Categoria[]>(apiUrl);
+  }
 }
