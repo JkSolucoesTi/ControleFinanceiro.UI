@@ -46,5 +46,5 @@ export class CartoesService {
   FiltrarCartoes(numeroCartao:string):Observable<Cartao[]>{
     const apiUrl = `${this.api}/FiltrarCartoes/${numeroCartao}`;
     return this.cartoesService.get<Cartao[]>(apiUrl);
-  }
+  }  
 }

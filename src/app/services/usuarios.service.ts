@@ -3,12 +3,21 @@ import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DadosLogin } from '../models/DadosLogin';
+import { AtualizarUsuario } from '../models/AtualizarUsuario';
 
 const httpOptions = {
   headers : new HttpHeaders({
     'Content-Type':'application/json'
   })
 }
+
+const httpOptions2 = {
+  headers : new HttpHeaders({
+    'Content-Type':'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('tokenUsuarioLogado')}`
+  })
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +43,25 @@ export class UsuariosService {
     const apiUrl = `${this.url}/LogarUsuario`;
     return this.httpClient.post<DadosLogin>(apiUrl,dadosLogin);
   }
+
+  RetornarFotoUsuario(id:string): Observable<any>{
+    const apiUrl = `${this.url}/RetornarFotoUsuario/${id}`;
+    return this.httpClient.get<any>(apiUrl);
+  }
+
+  PegarUsuarioPeloId(id:string): Observable<AtualizarUsuario>
+  {
+    const apiUrl = `${this.url}/${id}`;
+    return this.httpClient.get<AtualizarUsuario>(apiUrl);
+  }
+
+  AtualizarUsuario(atualizarUsuario: AtualizarUsuario): Observable<any>
+  {
+    const apiUrl = `${this.url}/AtualizarUsuario/${atualizarUsuario}`;
+    console.log(apiUrl);
+    console.log(atualizarUsuario);
+    return this.httpClient.put<AtualizarUsuario>(apiUrl,atualizarUsuario,httpOptions2);
+  }
+
 
 }

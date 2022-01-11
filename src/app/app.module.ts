@@ -60,8 +60,16 @@ import { NovoCartaoComponent } from './componentes/Cartao/novo-cartao/novo-carta
 import { AtualizarCartaoComponent } from './componentes/Cartao/atualizar-cartao/atualizar-cartao.component';
 import { ListagemCartoesComponent, DialogExcluirCartaoComponent} from './componentes/Cartao/listagem-cartoes/listagem-cartoes.component';
 import { NovaDespesaComponent } from './componentes/Despesa/nova-despesa/nova-despesa.component';
-import { ListagemDespesasComponent } from './componentes/Despesa/listagem-despesas/listagem-despesas.component';
+import { ListagemDespesasComponent , DialogExclusaoDespesasComponent } from './componentes/Despesa/listagem-despesas/listagem-despesas.component';
 import { AtualizarDespesaComponent } from './componentes/Despesa/atualizar-despesa/atualizar-despesa.component';
+import { NovoGanhoComponent } from './componentes/novo-ganho/novo-ganho.component';
+import { ListagemganhosComponent , DialogExclusaoGanhosComponent } from './componentes/Ganho/listagemganhos/listagemganhos.component';
+import { AtualizarGanhoComponent } from './componentes/Ganho/atualizar-ganho/atualizar-ganho.component';
+import { AtualizarUsuarioComponent } from './componentes/Usuario/atualizar-usuario/atualizar-usuario.component';
+import { DashBoardService } from './services/dash-board.service';
+import { UsuariosService } from './services/usuarios.service';
+import { GanhosService } from './services/ganhos.service';
+import { IndexComponent } from './componentes/Dashboard/index/index.component';
 
 export function PegarTokenUsuario(){
   return localStorage.getItem("tokenUsuarioLogado");
@@ -92,7 +100,14 @@ export function PegarTokenUsuario(){
     DialogExcluirCartaoComponent,
     NovaDespesaComponent,
     ListagemDespesasComponent,
-    AtualizarDespesaComponent
+    AtualizarDespesaComponent,
+    DialogExclusaoDespesasComponent,
+    NovoGanhoComponent,
+    ListagemganhosComponent,
+    AtualizarGanhoComponent,
+    DialogExclusaoGanhosComponent,
+    AtualizarUsuarioComponent,
+    IndexComponent
     ],
   imports: [
     BrowserModule,
@@ -141,7 +156,10 @@ export function PegarTokenUsuario(){
     FuncoesService,
     AuthGuardService,
     MesService,
-    DespesasService
+    DespesasService,
+    DashBoardService,
+    UsuariosService,
+    GanhosService
   ],
   bootstrap: [AppComponent]
 })

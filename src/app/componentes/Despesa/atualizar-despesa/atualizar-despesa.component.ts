@@ -1,9 +1,8 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { time } from 'console';
 import { Observable } from 'rxjs';
 import { Cartao } from 'src/app/models/Cartao';
 import { Categoria } from 'src/app/models/Categoria';
@@ -17,7 +16,7 @@ import { MesService } from 'src/app/services/mes.service';
 @Component({
   selector: 'app-atualizar-despesa',
   templateUrl: './atualizar-despesa.component.html',
-  styleUrls: ['./listagem-despesas.component.css']
+  styleUrls: []
 })
 export class AtualizarDespesaComponent implements OnInit {
 
@@ -41,7 +40,8 @@ export class AtualizarDespesaComponent implements OnInit {
 
   ngOnInit(): void {
     this.erros = [];
-    this.despesaId = this.route.snapshot.params.id;
+    this.despesaId = this.route.snapshot.params.despesaId;
+    console.log(this.despesaId);
     
     this.cartoesService.PegarCartoesPeloUsuarioId(this.usuarioId).subscribe(resultado =>{
       this.cartoes = resultado;
@@ -53,10 +53,13 @@ export class AtualizarDespesaComponent implements OnInit {
 
     this.mesesService.PegarTodos().subscribe(resultado => {
       this.meses = resultado;
-    })
+      console.log(this.meses);
+    });
 
     this.despesaService.PegarDespesaPeloId(this.despesaId).subscribe(resultado =>{
+      console.log(resultado);
       this.valorDespesa = resultado.valor;
+      
 
       this.formulario = new FormGroup({
         despesaId : new FormControl(resultado.despesaId),
@@ -77,6 +80,29 @@ export class AtualizarDespesaComponent implements OnInit {
   }
 
   VoltarListagem():void{
-    this.router.navigate(['despesa/listagemdespesas']);
+    this.router.navigate(['/despesa/listagemdespesas']);
+  }
+
+  EnviarFormulario(){
+    this.erros = [];
+    const despesa = this.formulario.value;
+
+    this.despesaService.AtualizarDespesa(this.despesaId,despesa).subscribe(resultado =>{
+      this.router.navigate(['/despesa/listagemdespesas']);
+      this.snackBar.open(resultado.mensagem,"Atualizar",{
+        duration: 2000,
+        horizontalPosition : 'right',
+        verticalPosition : 'top'
+      });    
+    },err => {
+      if(err.status === 400){
+        for(const campo in err.error.errors){
+          if(err.error.errors.hasOwnProperty(campo)){
+            this.erros.push(err.erros.errors[campo]);
+          }
+        }
+      }
+    }
+    );
   }
 }

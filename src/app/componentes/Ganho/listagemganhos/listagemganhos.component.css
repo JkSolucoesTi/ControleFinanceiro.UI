@@ -1,0 +1,64 @@
+.tabela{
+  width: 100%;
+  padding-top: 30px;
+}
+
+.dadosGanhos{
+  min-height: 400px;
+  padding: 30px 30px 30px 30px;
+}
+
+.divCard{
+  padding: 60px;
+  width: 60px;
+}
+
+.mat-card{
+  width: 500px;;
+}
+
+.mat-form-field.mat-form-field{
+  width: 500px;
+}
+
+.cabecalho{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.divAutoCompleteInput{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.autoCompleteInput{
+  width: 500px;
+}
+
+.titulo{
+  position: absolute;
+  margin-left: 5px;
+}
+
+.divAutoCompleteInput{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.autoCompleteInput{
+  width: 500px;
+}
+
+.textoErros{
+  font-weight: 900;
+  color: red;
+}
+
+.divErros{
+  padding: 20px;
+}
+
+.cardErros{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

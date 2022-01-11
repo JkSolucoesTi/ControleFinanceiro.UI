@@ -18,6 +18,15 @@ table{
     width: 600px;
 }
 
+.divAutoComplete{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.autoCompleteInput{
+  width: 500px;
+}
+
 .textoErros{
     font-weight: 900;
     color: red;

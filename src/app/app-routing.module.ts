@@ -19,6 +19,11 @@ import { AtualizarCartaoComponent } from './componentes/Cartao/atualizar-cartao/
 import { NovaDespesaComponent } from './componentes/Despesa/nova-despesa/nova-despesa.component';
 import { ListagemDespesasComponent } from './componentes/Despesa/listagem-despesas/listagem-despesas.component';
 import { AtualizarDespesaComponent } from './componentes/Despesa/atualizar-despesa/atualizar-despesa.component';
+import { NovoGanhoComponent } from './componentes/novo-ganho/novo-ganho.component';
+import { ListagemganhosComponent } from './componentes/Ganho/listagemganhos/listagemganhos.component';
+import { AtualizarGanhoComponent } from './componentes/Ganho/atualizar-ganho/atualizar-ganho.component';
+import { AtualizarUsuarioComponent } from './componentes/Usuario/atualizar-usuario/atualizar-usuario.component';
+import { IndexComponent } from './componentes/Dashboard/index/index.component';
 
 const routes: Routes = [
   {
@@ -69,7 +74,19 @@ const routes: Routes = [
         path:"juninho/CadastroKids",component:CadastroIEQComponent
       },
       {
-        path:"despesa/atualizardespesa/:id" , component:AtualizarDespesaComponent
+        path:"despesa/atualizardespesa/:despesaId" , component:AtualizarDespesaComponent
+      }
+      ,
+      {
+        path:"ganho/atualizarganho/:id" , component:AtualizarGanhoComponent
+      }
+      ,
+      {
+        path:"ganho/novoganho" ,component:NovoGanhoComponent
+      }
+      ,
+      {
+        path:"ganho/listagemganho" , component:ListagemganhosComponent
       }
       ,
       {
@@ -78,12 +95,20 @@ const routes: Routes = [
       {
         path:"juninho/atualizarcadastro/:cadastroId" , component:AtualizarCadastroComponent
       },
+      {
+        path:"usuario/atualizarusuario", component:AtualizarUsuarioComponent
+      }
+      ,
+      {
+        path:"dashboard/index", component: IndexComponent
+      }
     ]
   }
   ,
   {
     path:"usuario/registrarusuario", component:RegistrarUsuarioComponent
-  },
+  }
+  ,
   {
     path:"usuario/loginusuario" , component:LoginUsuarioComponent
   }

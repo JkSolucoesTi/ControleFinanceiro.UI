@@ -1,0 +1,69 @@
+<div class="divDashBoard">
+
+    <div *ngIf="anos" class="anos" fxLayout="row" fxLayoutAlign="center start">
+        <mat-form-field appearence="outline">
+            <mat-label>Selecione o ano</mat-label>
+            <mat-select #anoSelecionado [(ngModel)]="anoAtual">
+                <mat-option *ngFor="let ano of anos" [value]="ano">
+                    {{ano}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-around center start">
+        <div>
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="40">
+                    <mat-icon style="font-size: 50px;">credit_cards</mat-icon>
+                </div>
+                <div fxFlex="60">
+                    {{qtdCartoes}} Cartões cadastrados
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div>
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="40">
+                    <mat-icon style="font-size: 50px;">trending_up</mat-icon>
+                </div>
+                <div fxFlex="60">
+                   Ganhos de R$ {{ganhoTotal}}
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div >
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="40">
+                    <mat-icon style="font-size: 50px;">trending_down</mat-icon>
+                </div>
+                <div fxFlex="60">
+                   Despesa de R$ {{despesaTotal}}
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div>
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="40">
+                    <mat-icon style="font-size: 50px;">account_balance</mat-icon>
+                </div>
+                <div fxFlex="60">
+                   Saldo de R$ {{saldo}}
+                </div>
+            </div>
+        </mat-card>
+    </div>    
+    </div>    
+</div>
+
+

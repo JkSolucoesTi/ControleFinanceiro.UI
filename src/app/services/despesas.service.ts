@@ -28,7 +28,7 @@ export class DespesasService {
   }
 
   PegarDespesaPeloId(despesaId:number):Observable<Despesa>{
-    const urlApi = `${this.url}/PegarDespesaPeloId/${despesaId}`;
+    const urlApi = `${this.url}/PegarDespesasPeloId/${despesaId}`;
     return this.httpClient.get<Despesa>(urlApi,httpOptions);
   }
 
@@ -46,5 +46,10 @@ export class DespesasService {
     return this.httpClient.delete<any>(urlApi,httpOptions);
   }
 
+  FiltrarDespesas(nomeCategoria:string):Observable<Despesa[]>{
+    const apiUrl = `${this.url}/FiltrarDespesas/${nomeCategoria}`;
+    return this.httpClient.get<Despesa[]>(apiUrl);
+
+  }
 
 }

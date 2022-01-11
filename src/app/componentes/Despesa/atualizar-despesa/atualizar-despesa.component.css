@@ -1,0 +1,37 @@
+table{
+    width: 100%;
+    padding-top: 10px;
+}
+
+.dadosDespesa{
+    padding: 30px 30px 30px 30px;
+}
+  
+.cabecalho{
+    padding-top:30px;
+    padding-bottom: 30px;
+  }
+  
+
+.divCard{
+    padding:50px;
+    width: 600px;
+}
+
+.textoErros{
+    font-weight: 900;
+    color: red;
+  }
+  
+  .divErros{
+    padding: 20px;
+  }
+  
+  .cardErros{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .mat-form-field.mat-form-field{
+    width:500px
+  }
