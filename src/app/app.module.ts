@@ -3,6 +3,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { FuncoesService } from './services/funcoes.service';
 import { CadastroService } from './services/cadastro.service';
 import { SexoService } from './services/sexo.service';
+import { NgChartsModule } from 'ng2-charts';
 
 import { MesService } from './services/mes.service';
 import { DespesasService } from './services/despesas.service';
@@ -110,6 +111,7 @@ export function PegarTokenUsuario(){
     IndexComponent
     ],
   imports: [
+    NgChartsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -135,6 +137,7 @@ export function PegarTokenUsuario(){
     MatProgressBarModule,
     MatSidenavModule,
     MatListModule,
+    NgChartsModule,
     MatToolbarModule,
     FlexLayoutModule,
     NgxMaskModule.forRoot(),
